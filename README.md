@@ -9,8 +9,8 @@ Warrior Abilities
 -----------------
 
     warrior.walk!    - Move in the given direction (forward by default)
-    warrior.feel     - returns a space object, see below
-    warrior.attack!
+    warrior.feel     - Returns a Space for the given direction (forward by default)
+    warrior.attack!  - Attacks a unit in given direction (forward by default)
     warrior.health
     warrior.rest!
     warrior.rescue!
@@ -19,13 +19,18 @@ Warrior Abilities
     warrior.shoot!   - To fire an arrow
 
 
+Remember, you can only do one action (ending in !) per turn.
+
+
 
 Spaces
 ------
 
-    space.empty?
+A space is an object representing a square in the level. This is what gets returned by warrior.feel. You can call methods on a space to gather information about what is there. Here are the various methods you can call on a space.
+
+    space.empty?   - if true, 
     space.stairs?
-    space.enemy?
-    space.captive?
+    space.enemy?   - Is enemy?
+    space.captive? - Is captive at location?
     space.wall?
 
