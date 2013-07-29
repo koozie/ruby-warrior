@@ -11,8 +11,8 @@ Warrior Abilities
     warrior.walk!    - Move in the given direction (forward by default)
     warrior.feel     - Returns a Space for the given direction (forward by default)
     warrior.attack!  - Attacks a unit in given direction (forward by default)
-    warrior.health
-    warrior.rest!
+    warrior.health   - Returns an integer representing your health
+    warrior.rest!    - Gain 10% of max health back, but do nothing more
     warrior.rescue!
     warrior.pivot!
     warrior.look     - To determine your surroundings

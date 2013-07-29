@@ -1,6 +1,8 @@
 
 class Player
-  attr_reader :warrior
+
+  attr_reader :warrior, :health_start, :health_last_round
+
   def initialize
     @health_start = 20
     @health_last_round = 20
@@ -9,15 +11,24 @@ class Player
   def play_turn(warrior)
     @warrior = warrior  
 
-    if warrior.feel.empty?
-      warrior.walk!
-    else
-      warrior.attack!
-    end
+    action
+
+    @health_last_round = warrior.health
   end
 
   private
 
+  def action
+    if warrior.feel.empty?
+      if warrior.health < health_start
+        warrior.rest!
+      else
+        warrior.walk!
+      end
+    else
+      warrior.attack!
+    end
+  end
 
 end
   
