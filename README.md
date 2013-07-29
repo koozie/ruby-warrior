@@ -8,7 +8,7 @@ website, https://www.bloc.io/ruby-warrior/#/
 Warrior Abilities
 -----------------
 
-    warrior.walk!
+    warrior.walk!    - Move in the given direction (forward by default)
     warrior.feel     - returns a space object, see below
     warrior.attack!
     warrior.health
