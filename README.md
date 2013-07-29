@@ -21,6 +21,8 @@ Warrior Abilities
 
 Remember, you can only do one action (ending in !) per turn.
 
+Level 06:
+You can walk backward by passing ':backward' as an argument to walk!. Same goes for feel, rescue! and attack!. Archers have a limited attack distance.
 
 
 Spaces
@@ -34,3 +36,8 @@ A space is an object representing a square in the level. This is what gets retur
     space.captive? - Is captive at location?
     space.wall?
 
+
+Current Level
+-------------
+
+https://www.bloc.io/ruby-warrior/#/warriors/17492/levels/6
