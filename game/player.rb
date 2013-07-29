@@ -20,7 +20,7 @@ class Player
 
   def action
     if warrior.feel.empty?
-      if warrior.health < health_start
+      if warrior.health < health_start and not taking_damage?
         warrior.rest!
       else
         warrior.walk!
@@ -28,6 +28,10 @@ class Player
     else
       warrior.attack!
     end
+  end
+
+  def taking_damage?
+    warrior.health < health_last_round
   end
 
 end
