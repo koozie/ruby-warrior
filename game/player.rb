@@ -12,7 +12,6 @@ class Player
   def play_turn(warrior)
     @warrior = warrior  
 
-
     reverse_direction if check_for_wall 
 
     determine_action
@@ -53,6 +52,7 @@ class Player
       end
     end
   end
+
   def determine_action
     if enemy_bow_distance?
       warrior.shoot!
@@ -60,6 +60,7 @@ class Player
       fight_normal
     end
   end
+
   def enemy_bow_distance?
     scan = warrior.look
     return false if scan.include?("Captive")
@@ -67,7 +68,6 @@ class Player
     return true if scan.include?("Wizard")
     return false
   end
-
 
   def attack
     if enemy_behind_warrior?
@@ -85,6 +85,4 @@ class Player
   def taking_damage?
     warrior.health < health_last_round
   end
-
 end
-  
