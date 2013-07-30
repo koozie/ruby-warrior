@@ -15,7 +15,7 @@ class Player
 
     reverse_direction if check_for_wall 
 
-    action
+    determine_action
 
     @health_last_round = warrior.health
   end
@@ -34,7 +34,7 @@ class Player
     end
   end
 
-  def action
+  def fight_normal
     if warrior.feel(direction).empty?
       if taking_damage? and warrior.health < (health_start * 0.50)
         reverse_direction
@@ -53,6 +53,21 @@ class Player
       end
     end
   end
+  def determine_action
+    if enemy_bow_distance?
+      warrior.shoot!
+    else
+      fight_normal
+    end
+  end
+  def enemy_bow_distance?
+    scan = warrior.look
+    return false if scan.include?("Captive")
+    scan.shift
+    return true if scan.include?("Wizard")
+    return false
+  end
+
 
   def attack
     if enemy_behind_warrior?
