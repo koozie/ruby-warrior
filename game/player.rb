@@ -12,6 +12,7 @@ class Player
   def play_turn(warrior)
     @warrior = warrior  
 
+
     reverse_direction if check_for_wall 
 
     action
@@ -48,9 +49,22 @@ class Player
       if warrior.feel.captive?
         warrior.rescue!(direction)
       else
-        warrior.attack!(direction)
+        attack
       end
     end
+  end
+
+  def attack
+    if enemy_behind_warrior?
+      reverse_direction
+      warrior.pivot!
+    else
+      warrior.attack!(direction)
+    end
+  end
+
+  def enemy_behind_warrior?
+    warrior.feel(:backward).enemy?
   end
 
   def taking_damage?
