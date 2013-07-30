@@ -12,13 +12,7 @@ class Player
   def play_turn(warrior)
     @warrior = warrior  
 
-    if check_for_wall 
-      if direction == :forward
-        @direction = :backward
-      else
-        @direction = :forward
-      end
-    end
+    reverse_direction if check_for_wall 
 
     action
 
@@ -26,12 +20,26 @@ class Player
   end
 
   private
+
   def check_for_wall
     warrior.feel(direction).wall?
   end
+
+  def reverse_direction
+    if direction == :forward
+      @direction = :backward
+    else
+      @direction = :forward
+    end
+  end
+
   def action
     if warrior.feel(direction).empty?
-      if warrior.health < health_start and not taking_damage?
+      if taking_damage? and warrior.health < (health_start * 0.50)
+        reverse_direction
+        warrior.walk!(direction)
+        reverse_direction
+      elsif warrior.health < health_start and not taking_damage?
         warrior.rest!
       else
         warrior.walk!(direction)
